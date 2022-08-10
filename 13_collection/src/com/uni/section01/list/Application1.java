@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Application1 {
@@ -113,8 +115,26 @@ public class Application1 {
 //		sort 메소드 사용시 list가 오름차순으로 정렬
 		System.out.println("stringList sort : " + stringList);
 		
+		stringList = new LinkedList<>(stringList);
+		/* Iterator란?
+		 * Collection 인터페이스의 iterator() 메소드를 이용해서 인스턴스를 생성할 수 있다.
+		 * 컬렉션에서 값을 읽어오는 방식을 통일된 방식으로 제공하기 위해 사용한다.
+		 * 반복자 라고 불리우며, 반복문을 이용해서 목록을 하나씩 꺼내는 방식으로 사용하기 위함이다.
+		 * 인덱스로 관리되는 컬렉션이 아닌 경우에는 반복문을 사용해서 요소에 하나씩 접근할 수 없기 때문에
+		 * 인덱스를 사용하지 않고도 반복문을 사용하기 위한 목록을 만들어주는 역할이라고 보면 된다.
+		 * 
+		 * hasNext() : 다음 요소를 가지고 있는 경우 true, 더 이상 요소가 없는 경우 false를 반환
+		 * next() : 다음 요소를 반환
+		 * */
 		
+		Iterator<String> dIter = ((LinkedList<String>) stringList).descendingIterator();
 		
+		List<String> descList = new ArrayList<String>(stringList);
+		while(dIter.hasNext()) {
+			System.out.println(dIter.next());
+		}
+		
+		System.out.println(descList);
 	}
 
 }
